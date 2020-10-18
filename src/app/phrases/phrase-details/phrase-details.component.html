@@ -1,0 +1,20 @@
+<div *ngIf="phrase" class="phrase">
+<h3>Selected phrase</h3>
+<div *ngIf="authService.isLoggedIn; then thenBlock else elseBlock"></div> 
+<!-- esli login to vyvodin then esli net to esle -->
+
+<div *ngIf="authService.isLoggedIn">
+    <button (click)="save()">save</button>
+</div>
+
+<div><button (click)="goToPhrasesList()"> go at phrases </button></div>
+</div>
+
+<ng-template #thenBlock>
+<div><label>Value: <input type="text" [(ngModel)]="editValue"></label></div>
+<div><label>language: <input type="text" [(ngModel)]="editLanguage"></label></div>
+</ng-template>
+<ng-template #elseBlock>
+<div>Value:{{phrase.value}}</div>
+<div>Language:{{phrase.language}}</div>
+</ng-template>
